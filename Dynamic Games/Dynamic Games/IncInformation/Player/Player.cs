@@ -8,5 +8,7 @@ namespace Dynamic_Games.IncInformation.Player
 {
     interface Player
     {
+        private int Cash;
+
     }
 }
