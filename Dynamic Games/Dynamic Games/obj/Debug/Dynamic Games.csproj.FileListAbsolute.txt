@@ -30,3 +30,6 @@ C:\Users\Ashura\Dynamic Games\Dynamic Games\obj\Debug\Dynamic_Games.IncInformati
 C:\Users\Ashura\Dynamic Games\Dynamic Games\obj\Debug\Dynamic_Games.MenuForm.resources
 C:\Users\Ashura\Dynamic Games\Dynamic Games\obj\Debug\Dynamic_Games.Properties.Resources.resources
 C:\Users\Ashura\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.csproj.GenerateResource.Cache
+C:\Users\Ashura\Poker-dynamic\Dynamic Games\Dynamic Games\bin\Debug\Dynamic Games.exe.config
+C:\Users\Ashura\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.exe
+C:\Users\Ashura\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.pdb
