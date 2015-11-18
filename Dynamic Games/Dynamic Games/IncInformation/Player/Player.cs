@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace Dynamic_Games.IncInformation.Player
 {
+    enum Position
+    {
+        SmallBlind,
+        BigBlind,
+        None,
+    };
+
     interface Player
     {
-        private int Cash;
+        public int Cash;
+        public List<Card> Cards;
+        public Position Pos;
+        public int bet;
 
     }
 }
