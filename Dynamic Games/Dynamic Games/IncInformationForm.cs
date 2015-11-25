@@ -8,14 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Dynamic_Games.IncInformation.Player;
+using Dynamic_Games.IncInformation.Cards;
+
 namespace Dynamic_Games
 {
     public partial class IncInformationForm : Form
     {
+        Table table;
         public IncInformationForm()
         {
             InitializeComponent();
             PostInit();
+            table = new Table(new Deck(), 2);
         }
 
         private void PostInit() 
@@ -50,10 +55,12 @@ namespace Dynamic_Games
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            
             switch (ComboPlayerCount.SelectedIndex)
             {
-
                 case 0:
+                    table = new Table(new Deck(),2);
                     P1C1.Show();
                     P1C2.Show();
                     P2C1.Show();
@@ -73,6 +80,7 @@ namespace Dynamic_Games
                     break;
 
                 case 1:
+                    table = new Table(new Deck(),3);
                     P1C1.Show();
                     P1C2.Show();
                     P2C1.Show();
@@ -91,6 +99,7 @@ namespace Dynamic_Games
                     P8C2.Hide();
                     break;
                 case 2:
+                    table = new Table(new Deck(),4);
                     P1C1.Show();
                     P1C2.Show();
                     P2C1.Show();
@@ -109,6 +118,7 @@ namespace Dynamic_Games
                     P8C2.Hide();
                     break;
                 case 3:
+                    table = new Table(new Deck(),5);
                     P1C1.Show();
                     P1C2.Show();
                     P2C1.Show();
@@ -127,6 +137,7 @@ namespace Dynamic_Games
                     P8C2.Hide();
                     break;
                 case 4:
+                    table = new Table(new Deck(),6);
                     P1C1.Show();
                     P1C2.Show();
                     P2C1.Show();
@@ -145,6 +156,7 @@ namespace Dynamic_Games
                     P8C2.Hide();
                     break;
                 case 5:
+                    table = new Table(new Deck(),7);
                     P1C1.Show();
                     P1C2.Show();
                     P2C1.Show();
@@ -163,6 +175,7 @@ namespace Dynamic_Games
                     P8C2.Hide();
                     break;
                 case 6:
+                    table = new Table(new Deck(),8);
                     P1C1.Show();
                     P1C2.Show();
                     P2C1.Show();
@@ -181,6 +194,11 @@ namespace Dynamic_Games
                     P8C2.Show();
                     break;
             }
+        }
+
+        private void vizualize()
+        {
+            
         }
     }
 }

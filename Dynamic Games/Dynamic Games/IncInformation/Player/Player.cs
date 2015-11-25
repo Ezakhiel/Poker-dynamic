@@ -4,21 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Dynamic_Games.IncInformation.Cards;
+
 namespace Dynamic_Games.IncInformation.Player
 {
     enum Position
     {
-        SmallBlind,
-        BigBlind,
-        None,
+        SmallBlind = 1,
+        BigBlind = 2,
+        None = 0,
     };
 
-    interface Player
+    public abstract class Player
     {
-        public int Cash;
-        public List<Card> Cards;
-        public Position Pos;
+        public int cash;
+        public List<Card> cards;
+        public Position pos;
         public int bet;
 
+        public void setBet(int b);
+        public void setPos(Position p);
+        public void setCards(Card c1, Card c2);
     }
 }

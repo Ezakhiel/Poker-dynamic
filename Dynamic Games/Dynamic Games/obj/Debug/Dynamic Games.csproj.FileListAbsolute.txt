@@ -33,3 +33,6 @@ C:\Users\Ashura\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.csproj.Gener
 C:\Users\Ashura\Poker-dynamic\Dynamic Games\Dynamic Games\bin\Debug\Dynamic Games.exe.config
 C:\Users\Ashura\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.exe
 C:\Users\Ashura\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.pdb
+F:\C# Projekts\Poker-dynamic\Dynamic Games\Dynamic Games\bin\Debug\Dynamic Games.exe.config
+F:\C# Projekts\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.exe
+F:\C# Projekts\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Debug\Dynamic Games.pdb
