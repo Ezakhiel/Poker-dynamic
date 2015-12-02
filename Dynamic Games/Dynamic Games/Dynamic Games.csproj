@@ -51,6 +51,12 @@
     <Compile Include="CoopForm.Designer.cs">
       <DependentUpon>CoopForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="IncInformation\Cards\Deck.cs" />
+    <Compile Include="IncInformation\Player\AIPlayer.cs" />
+    <Compile Include="IncInformation\Cards\Card.cs" />
+    <Compile Include="IncInformation\Player\HumanPlayer.cs" />
+    <Compile Include="IncInformation\Player\Player.cs" />
+    <Compile Include="IncInformation\Player\Table.cs" />
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,7 @@
   <ItemGroup>
     <None Include="card-BMPs\s13.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

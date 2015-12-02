@@ -8,20 +8,20 @@ using Dynamic_Games.IncInformation.Cards;
 
 namespace Dynamic_Games.IncInformation.Player
 {
-    enum State
+    public enum State
     {
-        PreFlop,
-        Flop,
-        River,
+        Preriver,
+        river,
+        flop,
         turn,
     };
     class Table
     {
-        public List<Player> players;
+        public List<Player> players = new List<Player>(8);
         private int playerCount;
         private int bigAt;
-        public List<Card> river;
-        public Card flop;
+        public List<Card> flop = new List<Card>(3);
+        public Card river;
         public Card turn;
         private Deck deck;
         public int AllBet;
@@ -61,15 +61,16 @@ namespace Dynamic_Games.IncInformation.Player
 
         public void initTable()
         {
+            deck.initDeck();
             foreach(Player p in players)
             {
                 p.setCards(deck.getCard(), deck.getCard());  
             }
             movePos();
-            river.Add(deck.getCard());
-            river.Add(deck.getCard());
-            river.Add(deck.getCard());
-            flop = deck.getCard();
+            flop.Add(deck.getCard());
+            flop.Add(deck.getCard());
+            flop.Add(deck.getCard());
+            river = deck.getCard();
             turn = deck.getCard();
         }
 

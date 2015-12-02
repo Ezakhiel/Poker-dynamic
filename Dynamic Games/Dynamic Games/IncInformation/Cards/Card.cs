@@ -7,15 +7,15 @@ using System.Drawing;
 
 namespace Dynamic_Games.IncInformation.Cards
 {
-    class Card
+    public class Card
     {
         public String CardName;
         public Bitmap CardImage;
 
-        public Card(String name, Object image)
+        public Card(String name, Bitmap image)
         {
             CardName = name;
-            CardImage = (Bitmap)image;
+            CardImage = image;
         }
 
     }

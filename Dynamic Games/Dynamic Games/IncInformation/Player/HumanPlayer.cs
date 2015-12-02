@@ -12,21 +12,22 @@ namespace Dynamic_Games.IncInformation.Player
     {
         public HumanPlayer(int cash)
         {
+            cards = new List<Card>(2);
             this.cash = cash;
         }
 
-        public void setCards(Card c1, Card c2)
+        public override void setCards(Card c1, Card c2)
         {
             cards.Add(c1);
             cards.Add(c2);
         }
 
-        public void setPos(Position p)
+        public override void setPos(Position p)
         {
             this.pos = p;
         }
 
-        public void setBet(int b)
+        public override void setBet(int b)
         {
             bet = b;
         }

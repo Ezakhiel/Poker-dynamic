@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Dynamic_Games.IncInformation.Cards
 {
@@ -12,16 +13,18 @@ namespace Dynamic_Games.IncInformation.Cards
         static Random rnd;
         public Deck()
         {
-            initDeck();
             rnd = new Random();
+            initDeck();
         }
 
         public void initDeck()
         {
             // Resets deck with cards
-
+            Cards = new List<Card>(52);
             String symbol = "c";
             String nameHelper;
+            Bitmap img;
+            Card tmpCard;
             for (int i = 0; i < 4; i++)
             {
                 //c -> treff
@@ -31,12 +34,16 @@ namespace Dynamic_Games.IncInformation.Cards
                 for (int num = 1; num <= 9; num++)
                 {
                     nameHelper = symbol + "0" + num.ToString();
-                    Cards.Add(new Card(nameHelper,Properties.Resources.ResourceManager.GetObject(nameHelper + ".bmp")));
+                    img = (Bitmap)Properties.Resources.ResourceManager.GetObject(nameHelper);
+                    tmpCard = new Card(nameHelper, img);
+                    Cards.Add(tmpCard);
                 }
                 for (int num = 10; num <= 13; num++)
                 {
                     nameHelper = symbol + num.ToString();
-                    Cards.Add(new Card(nameHelper, Properties.Resources.ResourceManager.GetObject(nameHelper + ".bmp")));
+                    img = (Bitmap)Properties.Resources.ResourceManager.GetObject(nameHelper);
+                    tmpCard = new Card(nameHelper, img);
+                    Cards.Add(tmpCard);
                 }
                 switch (symbol)
                 {

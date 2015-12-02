@@ -8,7 +8,7 @@ using Dynamic_Games.IncInformation.Cards;
 
 namespace Dynamic_Games.IncInformation.Player
 {
-    enum Position
+    public enum Position
     {
         SmallBlind = 1,
         BigBlind = 2,
@@ -22,8 +22,8 @@ namespace Dynamic_Games.IncInformation.Player
         public Position pos;
         public int bet;
 
-        public void setBet(int b);
-        public void setPos(Position p);
-        public void setCards(Card c1, Card c2);
+        public abstract void setBet(int b);
+        public abstract void setPos(Position p); 
+        public abstract void setCards(Card c1, Card c2);
     }
 }

@@ -57,21 +57,23 @@ namespace Dynamic_Games
             this.River = new System.Windows.Forms.PictureBox();
             this.Turn = new System.Windows.Forms.PictureBox();
             this.P1ComboBox = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.P2ComboBox = new System.Windows.Forms.ComboBox();
             this.P2Label = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.P3ComboBox = new System.Windows.Forms.ComboBox();
             this.P3Label = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.P4ComboBox = new System.Windows.Forms.ComboBox();
             this.P4Label = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.P5ComboBox = new System.Windows.Forms.ComboBox();
             this.P5Label = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.P6ComboBox = new System.Windows.Forms.ComboBox();
             this.P6Label = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.P7ComboBox = new System.Windows.Forms.ComboBox();
             this.P7Label = new System.Windows.Forms.Label();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.P8ComboBox = new System.Windows.Forms.ComboBox();
             this.P8Label = new System.Windows.Forms.Label();
             this.P1Cash = new System.Windows.Forms.Label();
+            this.statusLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TablePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1C2)).BeginInit();
@@ -352,15 +354,17 @@ namespace Dynamic_Games
             this.P1ComboBox.Name = "P1ComboBox";
             this.P1ComboBox.Size = new System.Drawing.Size(95, 21);
             this.P1ComboBox.TabIndex = 26;
+            this.P1ComboBox.SelectedIndexChanged += new System.EventHandler(this.P1ComboBox_SelectedIndexChanged);
             // 
-            // comboBox1
+            // P2ComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(887, 106);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(95, 21);
-            this.comboBox1.TabIndex = 28;
+            this.P2ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.P2ComboBox.FormattingEnabled = true;
+            this.P2ComboBox.Location = new System.Drawing.Point(887, 106);
+            this.P2ComboBox.Name = "P2ComboBox";
+            this.P2ComboBox.Size = new System.Drawing.Size(95, 21);
+            this.P2ComboBox.TabIndex = 28;
+            this.P2ComboBox.SelectedIndexChanged += new System.EventHandler(this.P2ComboBox_SelectedIndexChanged);
             // 
             // P2Label
             // 
@@ -371,14 +375,15 @@ namespace Dynamic_Games
             this.P2Label.TabIndex = 27;
             this.P2Label.Text = "Player 2:";
             // 
-            // comboBox2
+            // P3ComboBox
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(887, 133);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(95, 21);
-            this.comboBox2.TabIndex = 30;
+            this.P3ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.P3ComboBox.FormattingEnabled = true;
+            this.P3ComboBox.Location = new System.Drawing.Point(887, 133);
+            this.P3ComboBox.Name = "P3ComboBox";
+            this.P3ComboBox.Size = new System.Drawing.Size(95, 21);
+            this.P3ComboBox.TabIndex = 30;
+            this.P3ComboBox.SelectedIndexChanged += new System.EventHandler(this.P3ComboBox_SelectedIndexChanged);
             // 
             // P3Label
             // 
@@ -389,14 +394,15 @@ namespace Dynamic_Games
             this.P3Label.TabIndex = 29;
             this.P3Label.Text = "Player 3:";
             // 
-            // comboBox3
+            // P4ComboBox
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(887, 160);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(95, 21);
-            this.comboBox3.TabIndex = 32;
+            this.P4ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.P4ComboBox.FormattingEnabled = true;
+            this.P4ComboBox.Location = new System.Drawing.Point(887, 160);
+            this.P4ComboBox.Name = "P4ComboBox";
+            this.P4ComboBox.Size = new System.Drawing.Size(95, 21);
+            this.P4ComboBox.TabIndex = 32;
+            this.P4ComboBox.SelectedIndexChanged += new System.EventHandler(this.P4ComboBox_SelectedIndexChanged);
             // 
             // P4Label
             // 
@@ -407,14 +413,15 @@ namespace Dynamic_Games
             this.P4Label.TabIndex = 31;
             this.P4Label.Text = "Player 4:";
             // 
-            // comboBox4
+            // P5ComboBox
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(887, 187);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(95, 21);
-            this.comboBox4.TabIndex = 34;
+            this.P5ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.P5ComboBox.FormattingEnabled = true;
+            this.P5ComboBox.Location = new System.Drawing.Point(887, 187);
+            this.P5ComboBox.Name = "P5ComboBox";
+            this.P5ComboBox.Size = new System.Drawing.Size(95, 21);
+            this.P5ComboBox.TabIndex = 34;
+            this.P5ComboBox.SelectedIndexChanged += new System.EventHandler(this.P5ComboBox_SelectedIndexChanged);
             // 
             // P5Label
             // 
@@ -425,14 +432,15 @@ namespace Dynamic_Games
             this.P5Label.TabIndex = 33;
             this.P5Label.Text = "Player 5:";
             // 
-            // comboBox5
+            // P6ComboBox
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(887, 214);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(95, 21);
-            this.comboBox5.TabIndex = 36;
+            this.P6ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.P6ComboBox.FormattingEnabled = true;
+            this.P6ComboBox.Location = new System.Drawing.Point(887, 214);
+            this.P6ComboBox.Name = "P6ComboBox";
+            this.P6ComboBox.Size = new System.Drawing.Size(95, 21);
+            this.P6ComboBox.TabIndex = 36;
+            this.P6ComboBox.SelectedIndexChanged += new System.EventHandler(this.P6ComboBox_SelectedIndexChanged);
             // 
             // P6Label
             // 
@@ -443,14 +451,15 @@ namespace Dynamic_Games
             this.P6Label.TabIndex = 35;
             this.P6Label.Text = "Player 6:";
             // 
-            // comboBox6
+            // P7ComboBox
             // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(887, 241);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(95, 21);
-            this.comboBox6.TabIndex = 38;
+            this.P7ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.P7ComboBox.FormattingEnabled = true;
+            this.P7ComboBox.Location = new System.Drawing.Point(887, 241);
+            this.P7ComboBox.Name = "P7ComboBox";
+            this.P7ComboBox.Size = new System.Drawing.Size(95, 21);
+            this.P7ComboBox.TabIndex = 38;
+            this.P7ComboBox.SelectedIndexChanged += new System.EventHandler(this.P7ComboBox_SelectedIndexChanged);
             // 
             // P7Label
             // 
@@ -461,14 +470,15 @@ namespace Dynamic_Games
             this.P7Label.TabIndex = 37;
             this.P7Label.Text = "Player 7:";
             // 
-            // comboBox7
+            // P8ComboBox
             // 
-            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(887, 268);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(95, 21);
-            this.comboBox7.TabIndex = 40;
+            this.P8ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.P8ComboBox.FormattingEnabled = true;
+            this.P8ComboBox.Location = new System.Drawing.Point(887, 268);
+            this.P8ComboBox.Name = "P8ComboBox";
+            this.P8ComboBox.Size = new System.Drawing.Size(95, 21);
+            this.P8ComboBox.TabIndex = 40;
+            this.P8ComboBox.SelectedIndexChanged += new System.EventHandler(this.P8ComboBox_SelectedIndexChanged);
             // 
             // P8Label
             // 
@@ -490,25 +500,46 @@ namespace Dynamic_Games
             this.P1Cash.TabIndex = 41;
             this.P1Cash.Text = "Money";
             // 
+            // statusLbl
+            // 
+            this.statusLbl.AutoSize = true;
+            this.statusLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLbl.Location = new System.Drawing.Point(823, 350);
+            this.statusLbl.Name = "statusLbl";
+            this.statusLbl.Size = new System.Drawing.Size(52, 17);
+            this.statusLbl.TabIndex = 42;
+            this.statusLbl.Text = "Status:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Location = new System.Drawing.Point(881, 352);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 43;
+            // 
             // IncInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 577);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.P1Cash);
-            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.P8ComboBox);
             this.Controls.Add(this.P8Label);
-            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.P7ComboBox);
             this.Controls.Add(this.P7Label);
-            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.P6ComboBox);
             this.Controls.Add(this.P6Label);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.P5ComboBox);
             this.Controls.Add(this.P5Label);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.P4ComboBox);
             this.Controls.Add(this.P4Label);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.P3ComboBox);
             this.Controls.Add(this.P3Label);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.P2ComboBox);
             this.Controls.Add(this.P2Label);
             this.Controls.Add(this.P1ComboBox);
             this.Controls.Add(this.Turn);
@@ -594,21 +625,23 @@ namespace Dynamic_Games
         private PictureBox River;
         private PictureBox Turn;
         private ComboBox P1ComboBox;
-        private ComboBox comboBox1;
+        private ComboBox P2ComboBox;
         private Label P2Label;
-        private ComboBox comboBox2;
+        private ComboBox P3ComboBox;
         private Label P3Label;
-        private ComboBox comboBox3;
+        private ComboBox P4ComboBox;
         private Label P4Label;
-        private ComboBox comboBox4;
+        private ComboBox P5ComboBox;
         private Label P5Label;
-        private ComboBox comboBox5;
+        private ComboBox P6ComboBox;
         private Label P6Label;
-        private ComboBox comboBox6;
+        private ComboBox P7ComboBox;
         private Label P7Label;
-        private ComboBox comboBox7;
+        private ComboBox P8ComboBox;
         private Label P8Label;
         private Label P1Cash;
+        private Label statusLbl;
+        private Label label1;
 
     }
 }
