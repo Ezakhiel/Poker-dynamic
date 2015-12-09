@@ -74,6 +74,13 @@ namespace Dynamic_Games
             this.P1Cash = new System.Windows.Forms.Label();
             this.statusLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.P2Cash = new System.Windows.Forms.Label();
+            this.P3Cash = new System.Windows.Forms.Label();
+            this.P5Cash = new System.Windows.Forms.Label();
+            this.P4Cash = new System.Windows.Forms.Label();
+            this.P6Cash = new System.Windows.Forms.Label();
+            this.P7Cash = new System.Windows.Forms.Label();
+            this.P8Cash = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TablePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1C2)).BeginInit();
@@ -493,8 +500,8 @@ namespace Dynamic_Games
             // 
             this.P1Cash.AutoSize = true;
             this.P1Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.P1Cash.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.P1Cash.Location = new System.Drawing.Point(106, 191);
+            this.P1Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P1Cash.Location = new System.Drawing.Point(169, 160);
             this.P1Cash.Name = "P1Cash";
             this.P1Cash.Size = new System.Drawing.Size(49, 15);
             this.P1Cash.TabIndex = 41;
@@ -519,11 +526,95 @@ namespace Dynamic_Games
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 43;
             // 
+            // P2Cash
+            // 
+            this.P2Cash.AutoSize = true;
+            this.P2Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P2Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P2Cash.Location = new System.Drawing.Point(289, 112);
+            this.P2Cash.Name = "P2Cash";
+            this.P2Cash.Size = new System.Drawing.Size(49, 15);
+            this.P2Cash.TabIndex = 44;
+            this.P2Cash.Text = "Money";
+            // 
+            // P3Cash
+            // 
+            this.P3Cash.AutoSize = true;
+            this.P3Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P3Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P3Cash.Location = new System.Drawing.Point(507, 121);
+            this.P3Cash.Name = "P3Cash";
+            this.P3Cash.Size = new System.Drawing.Size(49, 15);
+            this.P3Cash.TabIndex = 45;
+            this.P3Cash.Text = "Money";
+            // 
+            // P5Cash
+            // 
+            this.P5Cash.AutoSize = true;
+            this.P5Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P5Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P5Cash.Location = new System.Drawing.Point(578, 289);
+            this.P5Cash.Name = "P5Cash";
+            this.P5Cash.Size = new System.Drawing.Size(49, 15);
+            this.P5Cash.TabIndex = 46;
+            this.P5Cash.Text = "Money";
+            // 
+            // P4Cash
+            // 
+            this.P4Cash.AutoSize = true;
+            this.P4Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P4Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P4Cash.Location = new System.Drawing.Point(578, 160);
+            this.P4Cash.Name = "P4Cash";
+            this.P4Cash.Size = new System.Drawing.Size(49, 15);
+            this.P4Cash.TabIndex = 47;
+            this.P4Cash.Text = "Money";
+            // 
+            // P6Cash
+            // 
+            this.P6Cash.AutoSize = true;
+            this.P6Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P6Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P6Cash.Location = new System.Drawing.Point(507, 324);
+            this.P6Cash.Name = "P6Cash";
+            this.P6Cash.Size = new System.Drawing.Size(49, 15);
+            this.P6Cash.TabIndex = 48;
+            this.P6Cash.Text = "Money";
+            // 
+            // P7Cash
+            // 
+            this.P7Cash.AutoSize = true;
+            this.P7Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P7Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P7Cash.Location = new System.Drawing.Point(289, 324);
+            this.P7Cash.Name = "P7Cash";
+            this.P7Cash.Size = new System.Drawing.Size(49, 15);
+            this.P7Cash.TabIndex = 49;
+            this.P7Cash.Text = "Money";
+            // 
+            // P8Cash
+            // 
+            this.P8Cash.AutoSize = true;
+            this.P8Cash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.P8Cash.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.P8Cash.Location = new System.Drawing.Point(169, 289);
+            this.P8Cash.Name = "P8Cash";
+            this.P8Cash.Size = new System.Drawing.Size(49, 15);
+            this.P8Cash.TabIndex = 50;
+            this.P8Cash.Text = "Money";
+            // 
             // IncInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 577);
+            this.Controls.Add(this.P8Cash);
+            this.Controls.Add(this.P7Cash);
+            this.Controls.Add(this.P6Cash);
+            this.Controls.Add(this.P4Cash);
+            this.Controls.Add(this.P5Cash);
+            this.Controls.Add(this.P3Cash);
+            this.Controls.Add(this.P2Cash);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusLbl);
             this.Controls.Add(this.P1Cash);
@@ -642,6 +733,13 @@ namespace Dynamic_Games
         private Label P1Cash;
         private Label statusLbl;
         private Label label1;
+        private Label P2Cash;
+        private Label P3Cash;
+        private Label P5Cash;
+        private Label P4Cash;
+        private Label P6Cash;
+        private Label P7Cash;
+        private Label P8Cash;
 
     }
 }

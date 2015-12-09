@@ -113,6 +113,14 @@ namespace Dynamic_Games
             Flop3.Image = table.flop[2].CardImage;
             River.Image = table.river.CardImage;
             Turn.Image = table.turn.CardImage;
+            P1Cash.Text = (table.players[0].cash).ToString();
+            P2Cash.Text = (table.players[1].cash).ToString();
+            P3Cash.Text = (table.players[2].cash).ToString();
+            P4Cash.Text = (table.players[3].cash).ToString();
+            P5Cash.Text = (table.players[4].cash).ToString();
+            P6Cash.Text = (table.players[5].cash).ToString();
+            P7Cash.Text = (table.players[6].cash).ToString();
+            P8Cash.Text = (table.players[7].cash).ToString();
         }
 
         private void IncInformationForm_Load(object sender, EventArgs e)
@@ -128,135 +136,191 @@ namespace Dynamic_Games
                     table = new Table(new Deck(),2);
                     P1C1.Show();
                     P1C2.Show();
+                    P1Cash.Show();
                     P2C1.Show();
                     P2C2.Show();
+                    P2Cash.Show();
                     P3C1.Hide();
                     P3C2.Hide();
+                    P3Cash.Hide();
                     P4C1.Hide();
                     P4C2.Hide();
+                    P4Cash.Hide();
                     P5C1.Hide();
                     P5C2.Hide();
+                    P5Cash.Hide();
                     P6C1.Hide();
                     P6C2.Hide();
+                    P6Cash.Hide();
                     P7C1.Hide();
                     P7C2.Hide();
+                    P7Cash.Hide();
                     P8C1.Hide();
                     P8C2.Hide();
+                    P8Cash.Hide();
                     break;
 
                 case 1:
                     table = new Table(new Deck(),3);
                     P1C1.Show();
                     P1C2.Show();
+                    P1Cash.Show();
                     P2C1.Show();
                     P2C2.Show();
+                    P2Cash.Show();
                     P3C1.Show();
                     P3C2.Show();
+                    P3Cash.Show();
                     P4C1.Hide();
                     P4C2.Hide();
+                    P4Cash.Hide();
                     P5C1.Hide();
                     P5C2.Hide();
+                    P5Cash.Hide();
                     P6C1.Hide();
                     P6C2.Hide();
+                    P6Cash.Hide();
                     P7C1.Hide();
                     P7C2.Hide();
+                    P7Cash.Hide();
                     P8C1.Hide();
                     P8C2.Hide();
+                    P8Cash.Hide();
                     break;
                 case 2:
                     table = new Table(new Deck(),4);
                     P1C1.Show();
                     P1C2.Show();
+                    P1Cash.Show();
                     P2C1.Show();
                     P2C2.Show();
+                    P2Cash.Show();
                     P3C1.Show();
                     P3C2.Show();
+                    P3Cash.Show();
                     P4C1.Show();
                     P4C2.Show();
+                    P4Cash.Show();
                     P5C1.Hide();
                     P5C2.Hide();
+                    P5Cash.Hide();
                     P6C1.Hide();
                     P6C2.Hide();
+                    P6Cash.Hide();
                     P7C1.Hide();
                     P7C2.Hide();
+                    P7Cash.Hide();
                     P8C1.Hide();
                     P8C2.Hide();
+                    P8Cash.Hide();
                     break;
                 case 3:
                     table = new Table(new Deck(),5);
                     P1C1.Show();
                     P1C2.Show();
+                    P1Cash.Show();
                     P2C1.Show();
                     P2C2.Show();
+                    P2Cash.Show();
                     P3C1.Show();
                     P3C2.Show();
+                    P3Cash.Show();
                     P4C1.Show();
                     P4C2.Show();
+                    P4Cash.Show();
                     P5C1.Show();
                     P5C2.Show();
+                    P5Cash.Show();
                     P6C1.Hide();
                     P6C2.Hide();
+                    P6Cash.Hide();
                     P7C1.Hide();
                     P7C2.Hide();
+                    P7Cash.Hide();
                     P8C1.Hide();
                     P8C2.Hide();
+                    P8Cash.Hide();
                     break;
                 case 4:
                     table = new Table(new Deck(),6);
                     P1C1.Show();
                     P1C2.Show();
+                    P1Cash.Show();
                     P2C1.Show();
                     P2C2.Show();
+                    P2Cash.Show();
                     P3C1.Show();
                     P3C2.Show();
+                    P3Cash.Show();
                     P4C1.Show();
                     P4C2.Show();
+                    P4Cash.Show();
                     P5C1.Show();
                     P5C2.Show();
+                    P5Cash.Show();
                     P6C1.Show();
                     P6C2.Show();
+                    P6Cash.Show();
                     P7C1.Hide();
                     P7C2.Hide();
+                    P7Cash.Hide();
                     P8C1.Hide();
                     P8C2.Hide();
+                    P8Cash.Hide();
                     break;
                 case 5:
                     table = new Table(new Deck(),7);
                     P1C1.Show();
                     P1C2.Show();
+                    P1Cash.Show();
                     P2C1.Show();
                     P2C2.Show();
+                    P2Cash.Show();
                     P3C1.Show();
                     P3C2.Show();
+                    P3Cash.Show();
                     P4C1.Show();
                     P4C2.Show();
+                    P4Cash.Show();
                     P5C1.Show();
                     P5C2.Show();
+                    P5Cash.Show();
                     P6C1.Show();
                     P6C2.Show();
+                    P6Cash.Show();
                     P7C1.Show();
                     P7C2.Show();
+                    P7Cash.Show();
                     P8C1.Hide();
                     P8C2.Hide();
+                    P8Cash.Hide();
                     break;
                 case 6:
                     table = new Table(new Deck(),8);
                     P1C1.Show();
                     P1C2.Show();
+                    P1Cash.Show();
                     P2C1.Show();
                     P2C2.Show();
+                    P2Cash.Show();
                     P3C1.Show();
                     P3C2.Show();
+                    P3Cash.Show();
                     P4C1.Show();
                     P4C2.Show();
+                    P4Cash.Show();
                     P5C1.Show();
                     P5C2.Show();
+                    P5Cash.Show();
                     P6C1.Show();
                     P6C2.Show();
+                    P6Cash.Show();
                     P7C1.Show();
                     P7C2.Show();
+                    P7Cash.Show();
                     P8C1.Show();
                     P8C2.Show();
+                    P8Cash.Show();
                     break;
             }
             vizualize();
@@ -270,7 +334,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[0] = new AIPlayer(1000);
+               // table.players[0] = new AIPlayer(1000);
             }
         }
 
@@ -282,7 +346,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[1] = new AIPlayer(1000);
+                //table.players[1] = new AIPlayer(1000);
             }
         }
 
@@ -294,7 +358,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[2] = new AIPlayer(1000);
+                //table.players[2] = new AIPlayer(1000);
             }
         }
 
@@ -306,7 +370,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[3] = new AIPlayer(1000);
+                //table.players[3] = new AIPlayer(1000);
             }
         }
 
@@ -318,7 +382,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[4] = new AIPlayer(1000);
+                //table.players[4] = new AIPlayer(1000);
             }
         }
 
@@ -330,7 +394,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[5] = new AIPlayer(1000);
+                //table.players[5] = new AIPlayer(1000);
             }
         }
 
@@ -342,7 +406,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[6] = new AIPlayer(1000);
+                //table.players[6] = new AIPlayer(1000);
             }
         }
 
@@ -354,7 +418,7 @@ namespace Dynamic_Games
             }
             else
             {
-                table.players[7] = new AIPlayer(1000);
+                //table.players[7] = new AIPlayer(1000);
             }
         }
 
