@@ -4,32 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Dynamic_Games.IncInformation.Cards;
+using MyCard = Dynamic_Games.IncInformation.Cards;
+using System.Drawing;
+using System.ComponentModel;
 
 namespace Dynamic_Games.IncInformation.Player
 {
     public enum State
     {
-        Preriver,
-        river,
-        flop,
-        turn,
+        Preflop, Flop, Turn, River
     };
-    class Table
+    class Table : INotifyPropertyChanged
     {
+        
         public List<Player> players = new List<Player>(8);
         private int playerCount;
         private int bigAt;
-        public List<Card> flop = new List<Card>(3);
-        public Card river;
-        public Card turn;
-        private Deck deck;
+        public List<MyCard.Card> flop = new List<MyCard.Card>(3);
+        private MyCard.Card flopH1;
+        private MyCard.Card flopH2;
+        private MyCard.Card flopH3; // didnt use list because individual elements cant be bassed as ref
+        public MyCard.Card river;
+        private MyCard.Card riverHidden;
+        public MyCard.Card turn;
+        private MyCard.Card turnHidden;
+        private MyCard.Deck deck;
         public int AllBet;
-        public State GameState;
+        private State GameState;
+        // Event handler for gamestate change
+        public event PropertyChangedEventHandler StateChanged;
 
-        public Table(Deck deck, int playerCount)
+        public Table(MyCard.Deck d, int playerCount)
         {
-            this.deck = deck;
+            riverHidden = new MyCard.Card("unknown",Properties.Resources.back);
+            turnHidden = new MyCard.Card("unknown", Properties.Resources.back);
+            flopH1 = new MyCard.Card("unknown", Properties.Resources.back);
+            flopH2 = new MyCard.Card("unknown", Properties.Resources.back);
+            flopH3 = new MyCard.Card("unknown", Properties.Resources.back);
+            this.deck = d;
             this.playerCount = playerCount;
             for (int i = 0; i < playerCount; i++)
             {
@@ -39,7 +51,74 @@ namespace Dynamic_Games.IncInformation.Player
                 players.ElementAt(i).setBet(0);
             }
             initTable();
+            statevalue = State.Preflop;
         }
+        private void swapCard(ref MyCard.Card c1, ref MyCard.Card c2)
+        {
+            MyCard.Card temp = c1;
+            c1 = c2;
+            c2 = temp;
+        }
+
+        // Event handler
+        protected virtual void OnStateChanged()
+        {
+            //if (StateChanged != null)
+               // StateChanged(this.GameState, EventArgs.Empty);
+               // {                         
+                    switch (GameState)
+                        {
+                            case State.Preflop:
+                                MyCard.Card tmpcard;
+                                swapCard(ref riverHidden, ref river);
+
+                                swapCard(ref turnHidden, ref turn);
+                                tmpcard = flop[0];
+                                swapCard(ref flopH1, ref tmpcard);
+                                flop[0] = tmpcard;
+                                tmpcard = flop[1];
+                                swapCard(ref flopH2, ref tmpcard);
+                                flop[1] = tmpcard;
+                                tmpcard = flop[2];
+                                swapCard(ref flopH3, ref tmpcard);
+                                flop[2] = tmpcard;
+                                break;
+                            case State.Flop:
+                                tmpcard = flop[0];
+                                swapCard(ref flopH1, ref tmpcard);
+                                flop[0] = tmpcard;
+                                tmpcard = flop[1];
+                                swapCard(ref flopH2, ref tmpcard);
+                                flop[1] = tmpcard;
+                                tmpcard = flop[2];
+                                swapCard(ref flopH3, ref tmpcard);
+                                flop[2] = tmpcard;
+                                break;
+                            case State.River:
+                                swapCard(ref riverHidden, ref river);
+                                break;
+                            case State.Turn:
+                                swapCard(ref turnHidden, ref turn);
+                                break;
+                        }
+               // };
+        }
+
+        public State statevalue
+        {
+            get
+            {
+                return GameState;
+            }
+
+            set
+            {
+                GameState = value;
+                OnStateChanged();
+            }
+        }
+
+        // Evenethander end
 
         private void movePos()
         {
@@ -64,7 +143,7 @@ namespace Dynamic_Games.IncInformation.Player
             deck.initDeck();
             foreach(Player p in players)
             {
-                p.setCards(deck.getCard(), deck.getCard());  
+                p.setCards(deck.getCard(), deck.getCard());
             }
             movePos();
             flop.Add(deck.getCard());
@@ -74,5 +153,23 @@ namespace Dynamic_Games.IncInformation.Player
             turn = deck.getCard();
         }
 
+        public State nextState(State s)
+        {
+            Boolean ok = false;
+            foreach(State next in Enum.GetValues(typeof(State))){
+                if (ok)
+                    return next;
+                if (next == s)
+                    ok = true;        
+            }
+            return State.Preflop;
+        }
+
+
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add { throw new NotImplementedException(); }
+            remove { throw new NotImplementedException(); }
+        }
     }
 }

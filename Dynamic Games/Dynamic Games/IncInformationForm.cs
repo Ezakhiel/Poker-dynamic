@@ -53,7 +53,7 @@ namespace Dynamic_Games
         {
             List<int> players = new List<int> { 2, 3, 4, 5, 6, 7, 8 };
             this.ComboPlayerCount.SelectedIndexChanged -= new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            ComboPlayerCount.DataSource = players;
+            ComboPlayerCount.DataSource = players;      // insert "PLEASE SELECT PLAYER NUMBER"
             this.ComboPlayerCount.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             List<String> playerTypes = new List<String> { "Human", "Computer" };
             var p2cb = new String[2];
@@ -113,19 +113,12 @@ namespace Dynamic_Games
             Flop3.Image = table.flop[2].CardImage;
             River.Image = table.river.CardImage;
             Turn.Image = table.turn.CardImage;
-            P1Cash.Text = (table.players[0].cash).ToString();
-            P2Cash.Text = (table.players[1].cash).ToString();
-            P3Cash.Text = (table.players[2].cash).ToString();
-            P4Cash.Text = (table.players[3].cash).ToString();
-            P5Cash.Text = (table.players[4].cash).ToString();
-            P6Cash.Text = (table.players[5].cash).ToString();
-            P7Cash.Text = (table.players[6].cash).ToString();
-            P8Cash.Text = (table.players[7].cash).ToString();
+            
         }
 
         private void IncInformationForm_Load(object sender, EventArgs e)
         {
-            vizualize();
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,6 +127,8 @@ namespace Dynamic_Games
             {
                 case 0:
                     table = new Table(new Deck(),2);
+                    P1Cash.Text = (table.players[0].cash).ToString();
+                    P2Cash.Text = (table.players[1].cash).ToString();
                     P1C1.Show();
                     P1C2.Show();
                     P1Cash.Show();
@@ -162,6 +157,9 @@ namespace Dynamic_Games
 
                 case 1:
                     table = new Table(new Deck(),3);
+                    P1Cash.Text = (table.players[0].cash).ToString();
+                    P2Cash.Text = (table.players[1].cash).ToString();
+                    P3Cash.Text = (table.players[2].cash).ToString();
                     P1C1.Show();
                     P1C2.Show();
                     P1Cash.Show();
@@ -189,6 +187,10 @@ namespace Dynamic_Games
                     break;
                 case 2:
                     table = new Table(new Deck(),4);
+                    P1Cash.Text = (table.players[0].cash).ToString();
+                    P2Cash.Text = (table.players[1].cash).ToString();
+                    P3Cash.Text = (table.players[2].cash).ToString();
+                    P4Cash.Text = (table.players[3].cash).ToString();
                     P1C1.Show();
                     P1C2.Show();
                     P1Cash.Show();
@@ -216,6 +218,11 @@ namespace Dynamic_Games
                     break;
                 case 3:
                     table = new Table(new Deck(),5);
+                    P1Cash.Text = (table.players[0].cash).ToString();
+                    P2Cash.Text = (table.players[1].cash).ToString();
+                    P3Cash.Text = (table.players[2].cash).ToString();
+                    P4Cash.Text = (table.players[3].cash).ToString();
+                    P5Cash.Text = (table.players[4].cash).ToString();
                     P1C1.Show();
                     P1C2.Show();
                     P1Cash.Show();
@@ -243,6 +250,12 @@ namespace Dynamic_Games
                     break;
                 case 4:
                     table = new Table(new Deck(),6);
+                    P1Cash.Text = (table.players[0].cash).ToString();
+                    P2Cash.Text = (table.players[1].cash).ToString();
+                    P3Cash.Text = (table.players[2].cash).ToString();
+                    P4Cash.Text = (table.players[3].cash).ToString();
+                    P5Cash.Text = (table.players[4].cash).ToString();
+                    P6Cash.Text = (table.players[5].cash).ToString();
                     P1C1.Show();
                     P1C2.Show();
                     P1Cash.Show();
@@ -270,6 +283,13 @@ namespace Dynamic_Games
                     break;
                 case 5:
                     table = new Table(new Deck(),7);
+                    P1Cash.Text = (table.players[0].cash).ToString();
+                    P2Cash.Text = (table.players[1].cash).ToString();
+                    P3Cash.Text = (table.players[2].cash).ToString();
+                    P4Cash.Text = (table.players[3].cash).ToString();
+                    P5Cash.Text = (table.players[4].cash).ToString();
+                    P6Cash.Text = (table.players[5].cash).ToString();
+                    P7Cash.Text = (table.players[6].cash).ToString();
                     P1C1.Show();
                     P1C2.Show();
                     P1Cash.Show();
@@ -297,6 +317,14 @@ namespace Dynamic_Games
                     break;
                 case 6:
                     table = new Table(new Deck(),8);
+                    P1Cash.Text = (table.players[0].cash).ToString();
+                    P2Cash.Text = (table.players[1].cash).ToString();
+                    P3Cash.Text = (table.players[2].cash).ToString();
+                    P4Cash.Text = (table.players[3].cash).ToString();
+                    P5Cash.Text = (table.players[4].cash).ToString();
+                    P6Cash.Text = (table.players[5].cash).ToString();
+                    P7Cash.Text = (table.players[6].cash).ToString();
+                    P8Cash.Text = (table.players[7].cash).ToString();
                     P1C1.Show();
                     P1C2.Show();
                     P1Cash.Show();
@@ -420,6 +448,13 @@ namespace Dynamic_Games
             {
                 //table.players[7] = new AIPlayer(1000);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            table.statevalue = table.nextState(table.statevalue);
+            statusLabel.Text = table.statevalue.ToString();
+            vizualize();
         }
 
     

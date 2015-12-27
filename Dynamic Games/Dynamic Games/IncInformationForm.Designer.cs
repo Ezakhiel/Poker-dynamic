@@ -81,6 +81,8 @@ namespace Dynamic_Games
             this.P6Cash = new System.Windows.Forms.Label();
             this.P7Cash = new System.Windows.Forms.Label();
             this.P8Cash = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.statusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TablePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1C1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1C2)).BeginInit();
@@ -336,7 +338,7 @@ namespace Dynamic_Games
             // River
             // 
             this.River.Image = global::Dynamic_Games.Properties.Resources.back;
-            this.River.Location = new System.Drawing.Point(429, 148);
+            this.River.Location = new System.Drawing.Point(510, 148);
             this.River.Name = "River";
             this.River.Size = new System.Drawing.Size(54, 80);
             this.River.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -346,7 +348,7 @@ namespace Dynamic_Games
             // Turn
             // 
             this.Turn.Image = global::Dynamic_Games.Properties.Resources.back;
-            this.Turn.Location = new System.Drawing.Point(510, 148);
+            this.Turn.Location = new System.Drawing.Point(433, 148);
             this.Turn.Name = "Turn";
             this.Turn.Size = new System.Drawing.Size(54, 80);
             this.Turn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -603,11 +605,32 @@ namespace Dynamic_Games
             this.P8Cash.TabIndex = 50;
             this.P8Cash.Text = "Money";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(850, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(881, 354);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(35, 13);
+            this.statusLabel.TabIndex = 52;
+            this.statusLabel.Text = "label2";
+            // 
             // IncInformationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1078, 577);
+            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.P8Cash);
             this.Controls.Add(this.P7Cash);
             this.Controls.Add(this.P6Cash);
@@ -740,6 +763,8 @@ namespace Dynamic_Games
         private Label P6Cash;
         private Label P7Cash;
         private Label P8Cash;
+        private Button button1;
+        private Label statusLabel;
 
     }
 }
