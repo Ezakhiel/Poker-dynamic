@@ -21,6 +21,8 @@ namespace Dynamic_Games.IncInformation.Player
         public List<MyCard.Card> cards;
         public Position pos;
         public int bet;
+        public int folded;
+
 
         public abstract void setBet(int b);
 

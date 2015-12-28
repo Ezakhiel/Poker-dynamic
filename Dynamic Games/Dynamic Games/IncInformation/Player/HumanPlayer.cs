@@ -18,6 +18,7 @@ namespace Dynamic_Games.IncInformation.Player
 
         public override void setCards(MyCard.Card c1, MyCard.Card c2)
         {
+            cards = new List<MyCard.Card>(2);
             cards.Add(c1);
             cards.Add(c2);
         }

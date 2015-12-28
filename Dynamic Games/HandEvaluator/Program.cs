@@ -10,7 +10,7 @@ namespace HandEvaluator
         static void Main(string[] args)
          {
              // initialize board
-             string board = "5d kh qh 3h qc";
+             string board = "2d kh qh 3h qc";
              // Create a mask with AKs plus board
              Hand h1 = new Hand("ad kd", board);
              // Create a mask with 23 unsuited plus board
