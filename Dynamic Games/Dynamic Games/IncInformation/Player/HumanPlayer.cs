@@ -52,15 +52,23 @@ namespace Dynamic_Games.IncInformation.Player
                 }
                 else
                 {
+                    try
+                    {
                         int tmpbet = Int32.Parse(this.table.controls.betTextBox.Text);
                         if (table.isValidBet(tmpbet, id))
                         {
-                            this.bet =this.bet + tmpbet;
+                            this.bet = this.bet + tmpbet;
                         }
                         table.controls.Invoke((Action)delegate
                         {
                             table.controls.betTextBox.Text = "0";
                         });
+                    }
+                    catch (FormatException e)
+                    {
+                        //doing nothing is a fix... XD
+                    }
+                        
                 }
         }
     }

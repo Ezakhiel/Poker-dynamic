@@ -56,6 +56,7 @@ namespace Dynamic_Games
         List<Label> cashIterator = new List<Label>(8);
         public List<Label> betIterator = new List<Label>(8);
         Table table;
+        int playernum;
 
         public IncInformationForm()
         {
@@ -95,6 +96,7 @@ namespace Dynamic_Games
             betIterator.Add(P6Bet);
             betIterator.Add(P7Bet);
             betIterator.Add(P8Bet);
+            playernum = 8;
             table = new Table(new Deck(), 8, this);
             /*
             cardIterator.Add(Flop1);
@@ -107,7 +109,7 @@ namespace Dynamic_Games
 
         public void newTable()
         {
-            table = new Table(new Deck(), 8, this);
+            table = new Table(new Deck(), playernum, this);
         }
 
         private void groupVisuals()
@@ -280,7 +282,7 @@ namespace Dynamic_Games
             switch (ComboPlayerCount.SelectedIndex)
             {
                 case 0:
-                    table = new Table(new Deck() ,2 ,this);
+                    playernum = 2;
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     playerVis[2].hide();
@@ -292,7 +294,7 @@ namespace Dynamic_Games
                     break;
 
                 case 1:
-                    table = new Table(new Deck(), 3, this);
+                    playernum = 3;
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -304,7 +306,7 @@ namespace Dynamic_Games
                     playerVis[7].hide();
                     break;
                 case 2:
-                    table = new Table(new Deck(), 4, this);
+                    playernum = 4;
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -317,7 +319,7 @@ namespace Dynamic_Games
                     playerVis[7].hide();
                     break;
                 case 3:
-                    table = new Table(new Deck(), 5, this);
+                    playernum = 5;
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -331,7 +333,7 @@ namespace Dynamic_Games
                     playerVis[7].hide();
                     break;
                 case 4:
-                    table = new Table(new Deck(), 6, this);
+                    playernum = 6;
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -346,7 +348,7 @@ namespace Dynamic_Games
                     playerVis[7].hide();
                     break;
                 case 5:
-                    table = new Table(new Deck(), 7, this);
+                    playernum = 7;
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -362,7 +364,7 @@ namespace Dynamic_Games
                     playerVis[7].hide();
                     break;
                 case 6:
-                    table = new Table(new Deck(), 8, this);
+                    playernum = 8;
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -379,6 +381,8 @@ namespace Dynamic_Games
                     playerVis[7].show();
                     break;
             }
+            table = new Table(new Deck(), playernum, this);
+            table.resetTable();
             vizualize();
         }
 
