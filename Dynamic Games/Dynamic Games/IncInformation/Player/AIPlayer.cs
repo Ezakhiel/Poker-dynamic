@@ -5,21 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 using MyCard = Dynamic_Games.IncInformation.Cards;
+using Dynamic_Games.IncInformation.Game;
 
 namespace Dynamic_Games.IncInformation.Player
 {
     class AIPlayer : Player
     {
-        public AIPlayer(int cash)
+        public AIPlayer(int cash,int id,Table t)
         {
             cards = new List<MyCard.Card>(2);
             this.cash = cash;
+            this.table = t;
+            this.folded = false;
         }
 
-        public override void setBet(int b) 
-        {
-            bet = b;
-        }
         public override void setPos(Position p) 
         {
             this.pos = p;
@@ -34,6 +33,11 @@ namespace Dynamic_Games.IncInformation.Player
         }
 
         public override double getChance()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void decision()
         {
             throw new NotImplementedException();
         }

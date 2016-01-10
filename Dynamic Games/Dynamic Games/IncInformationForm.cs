@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 using Dynamic_Games.IncInformation.Player;
 using Dynamic_Games.IncInformation.Cards;
+using Dynamic_Games.IncInformation.Game;
 
 namespace Dynamic_Games
 {
     public partial class IncInformationForm : Form
     {
 
-        struct PlayerVisuals
+        public struct PlayerVisuals
         {
             public PictureBox c1;
             public PictureBox c2;
@@ -48,16 +50,19 @@ namespace Dynamic_Games
             }
         }
 
+
         List<PictureBox> cardIterator = new List<PictureBox>(21);
-        List<PlayerVisuals> playerVis = new List<PlayerVisuals>(6);
+        public List<PlayerVisuals> playerVis = new List<PlayerVisuals>(6);
         List<Label> cashIterator = new List<Label>(8);
+        public List<Label> betIterator = new List<Label>(8);
         Table table;
 
         public IncInformationForm()
         {
             InitializeComponent();
+            this.CreateHandle();
+            groupVisuals();
             PostInit();
-            table = new Table(new Deck(), 8);
             cardIterator.Add(P1C1);
             cardIterator.Add(P1C2);
             cardIterator.Add(P2C1);
@@ -82,8 +87,15 @@ namespace Dynamic_Games
             cashIterator.Add(P6Cash);
             cashIterator.Add(P7Cash);
             cashIterator.Add(P8Cash);
-            groupVisuals();
-            vizualize();
+            betIterator.Add(P1Bet);
+            betIterator.Add(P2Bet);
+            betIterator.Add(P3Bet);
+            betIterator.Add(P4Bet);
+            betIterator.Add(P5Bet);
+            betIterator.Add(P6Bet);
+            betIterator.Add(P7Bet);
+            betIterator.Add(P8Bet);
+            table = new Table(new Deck(), 8, this);
             /*
             cardIterator.Add(Flop1);
             cardIterator.Add(Flop2);
@@ -93,8 +105,31 @@ namespace Dynamic_Games
             */
         }
 
+        public void newTable()
+        {
+            table = new Table(new Deck(), 8, this);
+        }
+
         private void groupVisuals()
         {
+            PlayerVisuals p1 = new PlayerVisuals();
+            p1.c1 = P1C1;
+            p1.c2 = P1C2;
+            p1.money = P1Cash;
+            p1.bet = P1Bet;
+            p1.betLBL = P1BetLBL;
+            p1.typeLBL = P1Label;
+            p1.typeBox = P1ComboBox;
+            playerVis.Add(p1);
+            PlayerVisuals p2 = new PlayerVisuals();
+            p2.c1 = P2C1;
+            p2.c2 = P2C2;
+            p2.money = P2Cash;
+            p2.bet = P2Bet;
+            p2.betLBL = P2BetLBL;
+            p2.typeLBL = P2Label;
+            p2.typeBox = P2ComboBox;
+            playerVis.Add(p2);
             PlayerVisuals p3 = new PlayerVisuals();
             p3.c1 = P3C1;
             p3.c2 = P3C2;
@@ -217,7 +252,7 @@ namespace Dynamic_Games
                     break;
             }
         }
-        private void vizualize()
+        public void vizualize()
         {
             int needed = table.players.Count;
             int i = 0;
@@ -225,8 +260,6 @@ namespace Dynamic_Games
             {
                 cardIterator[i].Image = p.cards[0].CardImage;
                 cardIterator[i + 1].Image = p.cards[1].CardImage;
-            
-                cashIterator[i / 2].Text = p.cash.ToString();
                 i += 2;
             }
             Flop1.Image = table.flop[0].CardImage;
@@ -247,73 +280,73 @@ namespace Dynamic_Games
             switch (ComboPlayerCount.SelectedIndex)
             {
                 case 0:
-                    table = new Table(new Deck(),2);
+                    table = new Table(new Deck() ,2 ,this);
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
-                    playerVis[0].hide();
-                    playerVis[1].hide();
                     playerVis[2].hide();
                     playerVis[3].hide();
                     playerVis[4].hide();
                     playerVis[5].hide();
+                    playerVis[6].hide();
+                    playerVis[7].hide();
                     break;
 
                 case 1:
-                    table = new Table(new Deck(),3);
+                    table = new Table(new Deck(), 3, this);
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
-                    playerVis[0].show();
-                    playerVis[1].hide();
-                    playerVis[2].hide();
+                    playerVis[2].show();
                     playerVis[3].hide();
                     playerVis[4].hide();
                     playerVis[5].hide();
+                    playerVis[6].hide();
+                    playerVis[7].hide();
                     break;
                 case 2:
-                    table = new Table(new Deck(),4);
+                    table = new Table(new Deck(), 4, this);
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
                     P4Cash.Text = (table.players[3].cash).ToString();
-                    playerVis[0].show();
-                    playerVis[1].show();
-                    playerVis[2].hide();
-                    playerVis[3].hide();
+                    playerVis[2].show();
+                    playerVis[3].show();
                     playerVis[4].hide();
                     playerVis[5].hide();
+                    playerVis[6].hide();
+                    playerVis[7].hide();
                     break;
                 case 3:
-                    table = new Table(new Deck(),5);
+                    table = new Table(new Deck(), 5, this);
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
                     P4Cash.Text = (table.players[3].cash).ToString();
                     P5Cash.Text = (table.players[4].cash).ToString();
-                    playerVis[0].show();
-                    playerVis[1].show();
                     playerVis[2].show();
-                    playerVis[3].hide();
-                    playerVis[4].hide();
+                    playerVis[3].show();
+                    playerVis[4].show();
                     playerVis[5].hide();
+                    playerVis[6].hide();
+                    playerVis[7].hide();
                     break;
                 case 4:
-                    table = new Table(new Deck(),6);
+                    table = new Table(new Deck(), 6, this);
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
                     P4Cash.Text = (table.players[3].cash).ToString();
                     P5Cash.Text = (table.players[4].cash).ToString();
                     P6Cash.Text = (table.players[5].cash).ToString();
-                    playerVis[0].show();
-                    playerVis[1].show();
                     playerVis[2].show();
                     playerVis[3].show();
-                    playerVis[4].hide();
-                    playerVis[5].hide();
+                    playerVis[4].show();
+                    playerVis[5].show();
+                    playerVis[6].hide();
+                    playerVis[7].hide();
                     break;
                 case 5:
-                    table = new Table(new Deck(),7);
+                    table = new Table(new Deck(), 7, this);
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -321,15 +354,15 @@ namespace Dynamic_Games
                     P5Cash.Text = (table.players[4].cash).ToString();
                     P6Cash.Text = (table.players[5].cash).ToString();
                     P7Cash.Text = (table.players[6].cash).ToString();
-                    playerVis[0].show();
-                    playerVis[1].show();
                     playerVis[2].show();
                     playerVis[3].show();
                     playerVis[4].show();
-                    playerVis[5].hide();
+                    playerVis[5].show();
+                    playerVis[6].show();
+                    playerVis[7].hide();
                     break;
                 case 6:
-                    table = new Table(new Deck(),8);
+                    table = new Table(new Deck(), 8, this);
                     P1Cash.Text = (table.players[0].cash).ToString();
                     P2Cash.Text = (table.players[1].cash).ToString();
                     P3Cash.Text = (table.players[2].cash).ToString();
@@ -338,12 +371,12 @@ namespace Dynamic_Games
                     P6Cash.Text = (table.players[5].cash).ToString();
                     P7Cash.Text = (table.players[6].cash).ToString();
                     P8Cash.Text = (table.players[7].cash).ToString();
-                    playerVis[0].show();
-                    playerVis[1].show();
                     playerVis[2].show();
                     playerVis[3].show();
                     playerVis[4].show();
                     playerVis[5].show();
+                    playerVis[6].show();
+                    playerVis[7].show();
                     break;
             }
             vizualize();
@@ -353,11 +386,11 @@ namespace Dynamic_Games
         {
             if (P1ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[0] = new HumanPlayer(1000);
+                table.players[0] = new HumanPlayer(1000,0,table);
             }
             else
             {
-                table.players[0] = new AIPlayer(1000);
+                table.players[0] = new AIPlayer(1000, 0, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
@@ -368,11 +401,11 @@ namespace Dynamic_Games
         {
             if (P2ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[1] = new HumanPlayer(1000);
+                table.players[1] = new HumanPlayer(1000, 1, table);
             }
             else
             {
-                table.players[1] = new AIPlayer(1000);
+                table.players[1] = new AIPlayer(1000, 1, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
@@ -383,11 +416,11 @@ namespace Dynamic_Games
         {
             if (P3ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[2] = new HumanPlayer(1000);
+                table.players[2] = new HumanPlayer(1000, 2, table);
             }
             else
             {
-                table.players[2] = new AIPlayer(1000);
+                table.players[2] = new AIPlayer(1000, 2, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
@@ -398,11 +431,11 @@ namespace Dynamic_Games
         {
             if (P4ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[3] = new HumanPlayer(1000);
+                table.players[3] = new HumanPlayer(1000, 3, table);
             }
             else
             {
-                table.players[3] = new AIPlayer(1000);
+                table.players[3] = new AIPlayer(1000, 3, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
@@ -413,11 +446,11 @@ namespace Dynamic_Games
         {
             if (P5ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[4] = new HumanPlayer(1000);
+                table.players[4] = new HumanPlayer(1000, 4, table);
             }
             else
             {
-                table.players[4] = new AIPlayer(1000);
+                table.players[4] = new AIPlayer(1000, 4, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
@@ -428,11 +461,11 @@ namespace Dynamic_Games
         {
             if (P6ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[5] = new HumanPlayer(1000);
+                table.players[5] = new HumanPlayer(1000, 5, table);
             }
             else
             {
-                table.players[5] = new AIPlayer(1000);
+                table.players[5] = new AIPlayer(1000, 5, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
@@ -443,11 +476,11 @@ namespace Dynamic_Games
         {
             if (P7ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[6] = new HumanPlayer(1000);
+                table.players[6] = new HumanPlayer(1000, 6, table);
             }
             else
             {
-                table.players[6] = new AIPlayer(1000);
+                table.players[6] = new AIPlayer(1000, 6, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
@@ -458,24 +491,33 @@ namespace Dynamic_Games
         {
             if (P8ComboBox.SelectedText.Equals("Human"))
             {
-                table.players[7] = new HumanPlayer(1000);
+                table.players[7] = new HumanPlayer(1000, 7, table);
             }
             else
             {
-                table.players[7] = new AIPlayer(1000);
+                table.players[7] = new AIPlayer(1000, 7, table);
             }
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void finishBtn_Click(object sender, EventArgs e)
         {
-            table.statevalue = table.nextState(table.statevalue);
-            statusLabel.Text = table.statevalue.ToString();
-            vizualize();
+            table.mre.Set();
         }
 
+        private void foldBtn_Click(object sender, EventArgs e)
+        {
+            table.folded = true;
+            finishBtn_Click(sender, e);
+        }
 
+        public void removeCards(int i)
+        {
+            playerVis[i].c1.Image = Properties.Resources.black;
+            playerVis[i].c2.Image = Properties.Resources.black;
+
+        }
     }
 }

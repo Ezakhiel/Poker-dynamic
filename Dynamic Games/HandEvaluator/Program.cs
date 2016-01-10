@@ -10,9 +10,9 @@ namespace HandEvaluator
         static void Main(string[] args)
          {
              // initialize board
-             string board = "2d kh qh 3h qc";
+             string board = "ad kh qh 3h jc";
              // Create a mask with AKs plus board
-             Hand h1 = new Hand("ad kd", board);
+             Hand h1 = new Hand("ah kd", board);
              // Create a mask with 23 unsuited plus board
              Hand h2 = new Hand("2h qd", board);
              // Find stronger mask and print results

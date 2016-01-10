@@ -67,11 +67,13 @@
       <DependentUpon>CoopForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IncInformation\Cards\Deck.cs" />
+    <Compile Include="IncInformation\Game\Deal.cs" />
+    <Compile Include="IncInformation\Game\TurnThread.cs" />
     <Compile Include="IncInformation\Player\AIPlayer.cs" />
     <Compile Include="IncInformation\Cards\Card.cs" />
     <Compile Include="IncInformation\Player\HumanPlayer.cs" />
     <Compile Include="IncInformation\Player\Player.cs" />
-    <Compile Include="IncInformation\Player\Table.cs" />
+    <Compile Include="IncInformation\Game\Table.cs" />
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +110,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="card-BMPs\back.bmp" />
+    <None Include="card-BMPs\black.bmp" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,9 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="card-BMPs\greentop.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="card-BMPs\back.bmp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="card-BMPs\c01.bmp" />
