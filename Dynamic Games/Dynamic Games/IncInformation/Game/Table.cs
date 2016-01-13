@@ -28,7 +28,7 @@ namespace Dynamic_Games.IncInformation.Game
         public List<Player.Player> players = new List<Player.Player>(8);
         public List<uint> handvalues = new List<uint>(8);
         public ManualResetEvent mre = new ManualResetEvent(false);
-        public ManualResetEvent formLockEvent = new ManualResetEvent(false);
+        public ManualResetEvent threadLockEvent = new ManualResetEvent(false);
         private int playerCount;
         public List<MyCard.Card> flop = new List<MyCard.Card>(3);
         private MyCard.Card flopH1;
@@ -90,14 +90,22 @@ namespace Dynamic_Games.IncInformation.Game
             players[1].setPos(Player.Position.BigBlind);
             bigBLoc = 1;
             controls.playerVis[1].typeLBL.Text += "BB";
-            //start dealing
-            //playTable();
+        }
+
+        public void startTable()
+        {
             gameThread = new Thread(new ThreadStart(playTable));
             gameThread.Name = "GameTH";
             gameThread.IsBackground = true;
             gameThread.Start();
-            //formLockEvent.WaitOne();
         }
+
+        public void startTable(List<Player.Player> playerList)
+        {
+            this.players = playerList;
+            startTable();
+        }
+
 
         private void swapCard(ref MyCard.Card c1, ref MyCard.Card c2)
         {

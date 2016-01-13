@@ -39,7 +39,7 @@ namespace Dynamic_Games.IncInformation.Player
 
         public override void decision()
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

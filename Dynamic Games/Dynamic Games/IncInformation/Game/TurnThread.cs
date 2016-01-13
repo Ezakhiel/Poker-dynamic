@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 using Dynamic_Games.IncInformation.Player;
 
@@ -15,6 +16,7 @@ namespace Dynamic_Games.IncInformation.Game
     {
         public Deal deal;
         int foldcount;
+        private ManualResetEvent threadSack = new ManualResetEvent(false);
 
         public TurnThread(Deal d)
         {
@@ -41,7 +43,14 @@ namespace Dynamic_Games.IncInformation.Game
                 if (!deal.activePlayers[actualPlayer].folded)
                 {
                     // player sets fields
-                    deal.activePlayers[actualPlayer].decision();
+                    try
+                    {
+                        deal.activePlayers[actualPlayer].decision();
+                    }
+                    catch (ThreadInterruptedException exception)
+                    {
+                        theSack();
+                    }
 
                     if (!deal.activePlayers[actualPlayer].folded)
                     {
@@ -82,5 +91,14 @@ namespace Dynamic_Games.IncInformation.Game
 
         }
 
+
+        private void theSack()
+        {
+            deal.table.threadLockEvent.Set();
+            while (!threadSack.WaitOne())
+            {
+                Thread.Sleep(2000000);
+            }
+        }
     }
 }

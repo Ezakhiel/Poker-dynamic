@@ -45,6 +45,11 @@ namespace Dynamic_Games.IncInformation.Player
             if (this.cash > 0)
                 table.mre = new ManualResetEvent(false);
                 table.mre.WaitOne();
+                if (table.controls.restart)
+                {
+                    table.controls.restart = false;
+                    throw new ThreadInterruptedException(); 
+                }
                 if (table.folded)
                 {
                     this.folded = true;

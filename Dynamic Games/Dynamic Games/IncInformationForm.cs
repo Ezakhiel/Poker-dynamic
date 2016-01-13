@@ -57,6 +57,7 @@ namespace Dynamic_Games
         public List<Label> betIterator = new List<Label>(8);
         Table table;
         int playernum;
+        public volatile bool restart;
 
         public IncInformationForm()
         {
@@ -97,7 +98,9 @@ namespace Dynamic_Games
             betIterator.Add(P7Bet);
             betIterator.Add(P8Bet);
             playernum = 8;
+            restart = false;
             table = new Table(new Deck(), 8, this);
+            table.startTable();
             /*
             cardIterator.Add(Flop1);
             cardIterator.Add(Flop2);
@@ -194,6 +197,13 @@ namespace Dynamic_Games
             this.ComboPlayerCount.SelectedIndexChanged -= new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             ComboPlayerCount.DataSource = players;      // insert "PLEASE SELECT PLAYER NUMBER"
             this.ComboPlayerCount.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            resetPlayerBoxes();
+           
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
+        private void resetPlayerBoxes()
+        {
             List<String> playerTypes = new List<String> { "Human", "Computer" };
             var p2cb = new String[2];
             var p3cb = new String[2];
@@ -233,8 +243,10 @@ namespace Dynamic_Games
             this.P8ComboBox.SelectedIndexChanged -= new System.EventHandler(this.P8ComboBox_SelectedIndexChanged);
             P8ComboBox.DataSource = p8cb;
             this.P8ComboBox.SelectedIndexChanged += new System.EventHandler(this.P8ComboBox_SelectedIndexChanged);
-           
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            for (int i = 1; i < 9; i++)
+            {
+                playerVis[i - 1].typeLBL.Text = "Player " + i + ":";
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -279,12 +291,11 @@ namespace Dynamic_Games
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             switch (ComboPlayerCount.SelectedIndex)
             {
                 case 0:
                     playernum = 2;
-                    P1Cash.Text = (table.players[0].cash).ToString();
-                    P2Cash.Text = (table.players[1].cash).ToString();
                     playerVis[2].hide();
                     playerVis[3].hide();
                     playerVis[4].hide();
@@ -295,9 +306,6 @@ namespace Dynamic_Games
 
                 case 1:
                     playernum = 3;
-                    P1Cash.Text = (table.players[0].cash).ToString();
-                    P2Cash.Text = (table.players[1].cash).ToString();
-                    P3Cash.Text = (table.players[2].cash).ToString();
                     playerVis[2].show();
                     playerVis[3].hide();
                     playerVis[4].hide();
@@ -307,10 +315,6 @@ namespace Dynamic_Games
                     break;
                 case 2:
                     playernum = 4;
-                    P1Cash.Text = (table.players[0].cash).ToString();
-                    P2Cash.Text = (table.players[1].cash).ToString();
-                    P3Cash.Text = (table.players[2].cash).ToString();
-                    P4Cash.Text = (table.players[3].cash).ToString();
                     playerVis[2].show();
                     playerVis[3].show();
                     playerVis[4].hide();
@@ -320,11 +324,6 @@ namespace Dynamic_Games
                     break;
                 case 3:
                     playernum = 5;
-                    P1Cash.Text = (table.players[0].cash).ToString();
-                    P2Cash.Text = (table.players[1].cash).ToString();
-                    P3Cash.Text = (table.players[2].cash).ToString();
-                    P4Cash.Text = (table.players[3].cash).ToString();
-                    P5Cash.Text = (table.players[4].cash).ToString();
                     playerVis[2].show();
                     playerVis[3].show();
                     playerVis[4].show();
@@ -334,12 +333,6 @@ namespace Dynamic_Games
                     break;
                 case 4:
                     playernum = 6;
-                    P1Cash.Text = (table.players[0].cash).ToString();
-                    P2Cash.Text = (table.players[1].cash).ToString();
-                    P3Cash.Text = (table.players[2].cash).ToString();
-                    P4Cash.Text = (table.players[3].cash).ToString();
-                    P5Cash.Text = (table.players[4].cash).ToString();
-                    P6Cash.Text = (table.players[5].cash).ToString();
                     playerVis[2].show();
                     playerVis[3].show();
                     playerVis[4].show();
@@ -349,13 +342,6 @@ namespace Dynamic_Games
                     break;
                 case 5:
                     playernum = 7;
-                    P1Cash.Text = (table.players[0].cash).ToString();
-                    P2Cash.Text = (table.players[1].cash).ToString();
-                    P3Cash.Text = (table.players[2].cash).ToString();
-                    P4Cash.Text = (table.players[3].cash).ToString();
-                    P5Cash.Text = (table.players[4].cash).ToString();
-                    P6Cash.Text = (table.players[5].cash).ToString();
-                    P7Cash.Text = (table.players[6].cash).ToString();
                     playerVis[2].show();
                     playerVis[3].show();
                     playerVis[4].show();
@@ -365,14 +351,6 @@ namespace Dynamic_Games
                     break;
                 case 6:
                     playernum = 8;
-                    P1Cash.Text = (table.players[0].cash).ToString();
-                    P2Cash.Text = (table.players[1].cash).ToString();
-                    P3Cash.Text = (table.players[2].cash).ToString();
-                    P4Cash.Text = (table.players[3].cash).ToString();
-                    P5Cash.Text = (table.players[4].cash).ToString();
-                    P6Cash.Text = (table.players[5].cash).ToString();
-                    P7Cash.Text = (table.players[6].cash).ToString();
-                    P8Cash.Text = (table.players[7].cash).ToString();
                     playerVis[2].show();
                     playerVis[3].show();
                     playerVis[4].show();
@@ -381,9 +359,30 @@ namespace Dynamic_Games
                     playerVis[7].show();
                     break;
             }
+            resetPlayerBoxes();
+
             table = new Table(new Deck(), playernum, this);
+            foreach (Player p in table.players)
+            {
+                playerVis[p.id].money.Text = p.cash.ToString();
+            }
             table.resetTable();
             vizualize();
+            table.startTable();
+        }
+
+        private void aiNewGame()
+        {
+            // set bool to signal gameThread to restart
+            restart = true;
+            //release gamethread from user interaction lock
+            table.mre.Set();
+            //wait for thread response on being locked
+            table.threadLockEvent.WaitOne();
+            table.threadLockEvent = new ManualResetEvent(false);
+
+            //starttable with new ai players
+            table.startTable();
         }
 
         private void P1ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -399,6 +398,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void P2ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -414,6 +414,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void P3ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -429,6 +430,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void P4ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -444,6 +446,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void P5ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -459,6 +462,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void P6ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -474,6 +478,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void P7ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -489,6 +494,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void P8ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -504,6 +510,7 @@ namespace Dynamic_Games
             table.resetTable();
             table.statevalue = State.Preflop;
             vizualize();
+            aiNewGame();
         }
 
         private void finishBtn_Click(object sender, EventArgs e)
