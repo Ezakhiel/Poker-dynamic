@@ -31,3 +31,6 @@ F:\C# Projekts\Poker-dynamic\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Relea
 F:\C# Projekts\Poker-dynamic\Poker-dynamic\Dynamic Games\Dynamic Games\bin\Release\HandEvaluator.exe
 F:\C# Projekts\Poker-dynamic\Poker-dynamic\Dynamic Games\Dynamic Games\bin\Release\HandEvaluator.pdb
 F:\C# Projekts\Poker-dynamic\Poker-dynamic\Dynamic Games\Dynamic Games\bin\Release\HandEvaluator.xml
+C:\Users\Ilyés\SkyDrive\Egyetem\3. ev\Egyeni projekt\jo\Poker-dynamic\Dynamic Games\Dynamic Games\bin\Release\Dynamic Games.exe.config
+C:\Users\Ilyés\SkyDrive\Egyetem\3. ev\Egyeni projekt\jo\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Release\Dynamic Games.exe
+C:\Users\Ilyés\SkyDrive\Egyetem\3. ev\Egyeni projekt\jo\Poker-dynamic\Dynamic Games\Dynamic Games\obj\Release\Dynamic Games.pdb
