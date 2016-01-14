@@ -9,7 +9,7 @@ namespace Dynamic_Games.IncInformation.Player
     class AI
     {
         /*
-         WinChance- t meg kell adni neki dinamikusna jatekos szamtol fuggoen
+         WinChance- t meg kell adni neki dinamikusnak jatekos szamtol fuggoen
          */
 
 
@@ -20,8 +20,7 @@ namespace Dynamic_Games.IncInformation.Player
                   int playerCount,
                   int mybet,
                   int randomFactorForWinChance,
-                  int ramdomFactorForMyBet,
-                  int randomFactorForPlayer)
+                  int ramdomFactorForMyBet)
         {
             strategyForAI(AIPlayer, strategyType,
                           bet,
@@ -29,8 +28,7 @@ namespace Dynamic_Games.IncInformation.Player
                           playerCount,
                           mybet,
                           randomFactorForWinChance,
-                          ramdomFactorForMyBet,
-                          randomFactorForPlayer);
+                          ramdomFactorForMyBet);
 
         }
 
@@ -41,8 +39,7 @@ namespace Dynamic_Games.IncInformation.Player
                                     int playerCount,
                                     int mybet,
                                     int randomFactorForWinChance,
-                                    int randomFactorForMyBet,
-                                    int randomFactorForPlayer)
+                                    int randomFactorForMyBet)
         {
             switch (strategyType)
             {
@@ -66,7 +63,7 @@ namespace Dynamic_Games.IncInformation.Player
                                         else
                                         {
                                             Random rnd = new Random();
-                                            int dice = rnd.Next(1, 30);
+                                            int dice = rnd.Next(bet, bet + AIPlayer.table.bigBlind);
                                             int seged = AIPlayer.cash % dice;
                                             AIPlayer.bet = seged;
                                         }
@@ -103,24 +100,24 @@ namespace Dynamic_Games.IncInformation.Player
 
                         if (winChance > 5)
                         {
-                            if (bet > (AIPlayer.cash % 70) || 70 > (randomFactorForWinChance + randomFactorForMyBet))
+                            if (bet > (AIPlayer.cash % 70) || 60 > (randomFactorForWinChance + randomFactorForMyBet))
                             {
-                                if (/*Game turn need to be after the river*/true)
+                                if (AIPlayer.table.statevalue == Game.State.River)
                                 {
                                     if ((randomFactorForWinChance + randomFactorForMyBet) % 100 < 20)
                                     {
                                         if (bet < (AIPlayer.cash % 50) || 50 > (randomFactorForWinChance + randomFactorForMyBet))
                                         {
-                                            if (winChance > 98 && ((randomFactorForWinChance + randomFactorForMyBet) % 100 > 50))
+                                            if (winChance > 60 && ((randomFactorForWinChance + randomFactorForMyBet) % 100 > 50))
                                             {
-                                                if (winChance > 99)
+                                                if (winChance > 85)
                                                 {
                                                     AIPlayer.bet = AIPlayer.cash;
                                                 }
                                                 else
                                                 {
                                                     Random rnd = new Random();
-                                                    int dice = rnd.Next(1, 20);
+                                                    int dice = rnd.Next(bet, bet + AIPlayer.table.bigBlind);
                                                     int seged = AIPlayer.cash % dice;
                                                     AIPlayer.bet = seged;
                                                 }
@@ -195,7 +192,7 @@ namespace Dynamic_Games.IncInformation.Player
                                     if ((randomFactorForWinChance + randomFactorForMyBet) % 100 < 1)
                                     {
                                         Random rnd = new Random();
-                                        int dice = rnd.Next(1, AIPlayer.cash);
+                                        int dice = rnd.Next(bet, AIPlayer.cash);
                                         int seged = AIPlayer.cash % dice;
                                         AIPlayer.bet = seged;
                                     }
@@ -270,7 +267,7 @@ namespace Dynamic_Games.IncInformation.Player
                                         if ((randomFactorForWinChance + randomFactorForMyBet) % 100 < 2)
                                         {
                                             Random rnd = new Random();
-                                            int dice = rnd.Next(1, AIPlayer.cash);
+                                            int dice = rnd.Next(bet, AIPlayer.cash);
                                             int seged = AIPlayer.cash % dice;
                                             AIPlayer.bet = seged;
                                         }
